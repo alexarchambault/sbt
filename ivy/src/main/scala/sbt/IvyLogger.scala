@@ -4,6 +4,7 @@
 package sbt
 
 import org.apache.ivy.util.{ Message, MessageLogger, MessageLoggerEngine }
+import com.typesafe.scalalogging.Logger
 
 /** Interface to Ivy logging. */
 private final class IvyLoggerInterface(logger: Logger) extends MessageLogger {
@@ -21,7 +22,7 @@ private final class IvyLoggerInterface(logger: Logger) extends MessageLogger {
   //DEBUG level messages are very verbose and rarely useful to users.
   // TODO: provide access to this information some other way
   def debug(msg: String) {}
-  def verbose(msg: String) = logger.verbose(msg)
+  def verbose(msg: String) = logger.debug(msg)
   def deprecated(msg: String) = warn(msg)
   def info(msg: String) = logger.info(msg)
   def rawinfo(msg: String) = info(msg)

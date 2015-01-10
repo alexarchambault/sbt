@@ -4,6 +4,8 @@
 package sbt
 
 import java.io.File
+import com.typesafe.scalalogging.Logger
+
 import scala.xml.{ Node => XNode, NodeSeq }
 import collection.mutable
 import ivyint.CachedResolutionResolveEngine

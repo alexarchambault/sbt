@@ -17,6 +17,7 @@ import core.{ IvyPatternHelper, LogOptions }
 import org.apache.ivy.util.{ Message, MessageLogger }
 import org.apache.ivy.plugins.latest.{ ArtifactInfo => IvyArtifactInfo }
 import org.apache.ivy.plugins.matcher.{ MapMatcher, PatternMatcher }
+import com.typesafe.scalalogging.Logger
 
 private[sbt] object CachedResolutionResolveCache {
   def createID(organization: String, name: String, revision: String) =

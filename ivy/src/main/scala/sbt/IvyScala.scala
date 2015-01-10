@@ -11,6 +11,8 @@ import org.apache.ivy.core.module.descriptor.{ DependencyDescriptor, DefaultModu
 import org.apache.ivy.core.module.id.{ ArtifactId, ModuleId, ModuleRevisionId }
 import org.apache.ivy.plugins.matcher.ExactPatternMatcher
 
+import com.typesafe.scalalogging.Logger
+
 object ScalaArtifacts {
   import xsbti.ArtifactInfo._
   val Organization = ScalaOrganization

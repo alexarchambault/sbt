@@ -5,6 +5,7 @@ package sbt
 
 import java.io.{ File, FileOutputStream }
 import java.util.concurrent.Callable
+import com.typesafe.scalalogging.Logger
 
 /**
  * A component manager provides access to the pieces of xsbt that are distributed as components.

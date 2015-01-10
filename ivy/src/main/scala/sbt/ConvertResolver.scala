@@ -17,6 +17,7 @@ import org.apache.ivy.plugins.repository.file.{ FileRepository => FileRepo, File
 import java.io.{ IOException, File }
 import org.apache.ivy.util.{ FileUtil, ChecksumHelper }
 import org.apache.ivy.core.module.descriptor.{ Artifact => IArtifact }
+import com.typesafe.scalalogging.Logger
 
 private[sbt] object ConvertResolver {
   /**

@@ -1,5 +1,6 @@
 package sbt
 
+import com.typesafe.scalalogging.Logger
 import DependencyFilter._
 
 /**
@@ -40,7 +41,7 @@ object ConflictWarning {
           val suffixes = fullNames.map(getCrossSuffix).mkString(", ")
           s"${idString(org, rawName)} $suffixes"
         }
-      log.log(config.level, conflictMsgs.mkString(pre, "\n   ", ""))
+      config.level.log(log, conflictMsgs.mkString(pre, "\n   ", ""))
       if (config.failOnConflict) {
         val summary = crossMismatches.map { case ((org, raw), _) => idString(org, raw) }.mkString(", ")
         sys.error("Conflicting cross-version suffixes in: " + summary)

@@ -150,7 +150,6 @@ object IvyActions {
    * Resolves and retrieves dependencies.  'ivyConfig' is used to produce an Ivy file and configuration.
    * 'updateConfig' configures the actual resolution and retrieval process.
    */
-  @deprecated("This is no longer public.", "0.13.6")
   def update(module: IvySbt#Module, configuration: UpdateConfiguration, log: Logger): UpdateReport =
     updateEither(module, configuration, UnresolvedWarningConfiguration(), LogicalClock.unknown, None, log) match {
       case Right(r) => r

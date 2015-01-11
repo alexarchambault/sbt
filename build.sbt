@@ -41,8 +41,16 @@ lazy val ivyProj = (project in file("ivy")).
     libraryDependencies += scalaLogging.value,
     testExclusive)
 
+lazy val classpathProj = (project in file("util") / "classpath").
+  dependsOn(ioProj).
+  settings(baseSettings ++ testDependencies: _*).
+  settings(
+    name := "Classpath",
+    libraryDependencies += scalaCompiler.value
+  )
+
 lazy val nonRoots =
-  Seq(ioProj, ivyProj)
+  Seq(ioProj, ivyProj, classpathProj)
     .map(p => p.copy(configurations = (p.configurations.filter(_ != Provided)) :+ config("provided").intransitive))
     .map(p => LocalProject(p.id))
 

@@ -7,13 +7,41 @@ def commonSettings: Seq[Setting[_]] = Seq(
   scalaVersion := "2.11.4",
   crossScalaVersions := Seq("2.10.4", "2.11.4"),
   publishArtifact in packageDoc := false,
-  publishMavenStyle := false,
+  publishMavenStyle := true,
+  publishTo := {
+    val nexus = "https://oss.sonatype.org/"
+    if (isSnapshot.value)
+      Some("snapshots" at nexus + "content/repositories/snapshots")
+    else
+      Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+  },
+  pomExtra := {
+    <url>https://github.com/jove-sh/sbt</url>
+      <licenses>
+        <license>
+          <name>BSD-3-Clause</name>
+          <url>http://www.opensource.org/licenses/BSD-3-Clause</url>
+        </license>
+      </licenses>
+      <scm>
+        <connection>scm:git:github.com/jove-sh/sbt.git</connection>
+        <developerConnection>scm:git:git@github.com:jove-sh/sbt.git</developerConnection>
+        <url>github.com/jove-sh/sbt.git</url>
+      </scm>
+      <developers>
+        <developer>
+          <id>alexarchambault</id>
+          <name>Alexandre Archambault</name>
+          <url>https://github.com/alexarchambault</url>
+        </developer>
+      </developers>
+  },
   resolvers += Resolver.typesafeIvyRepo("releases"),
   concurrentRestrictions in Global += Util.testExclusiveRestriction,
   testOptions += Tests.Argument(TestFrameworks.ScalaCheck, "-w", "1"),
   javacOptions in compile ++= Seq("-target", "6", "-source", "6", "-Xlint", "-Xlint:-serial"),
   incOptions := incOptions.value.withNameHashing(true)
-)
+) ++ xerial.sbt.Sonatype.sonatypeSettings
 
 def minimalSettings: Seq[Setting[_]] =
   commonSettings ++ Status.settings ++

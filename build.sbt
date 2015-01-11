@@ -44,8 +44,7 @@ def commonSettings: Seq[Setting[_]] = Seq(
 ) ++ xerial.sbt.Sonatype.sonatypeSettings
 
 def minimalSettings: Seq[Setting[_]] =
-  commonSettings ++ Status.settings ++
-  publishPomSettings
+  commonSettings ++ Status.settings
 
 def baseSettings: Seq[Setting[_]] =
   minimalSettings ++ baseScalacOptions ++ Licensed.settings ++ Formatting.settings
@@ -84,4 +83,4 @@ lazy val nonRoots =
 
 lazy val root: Project = (project in file(".")).
   aggregate(nonRoots: _*).
-  settings(minimalSettings ++ Util.publishPomSettings ++ Formatting.sbtFilesSettings: _*)
+  settings(minimalSettings ++ Formatting.sbtFilesSettings: _*)

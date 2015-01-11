@@ -1,32 +1,13 @@
 import Util._
 import Dependencies._
 
-lazy val safeUnitTests = taskKey[Unit]("Known working tests (for both 2.10 and 2.11)")
-
-def customCommands: Seq[Setting[_]] = Seq(
-  commands += Command.command("setupBuildScala211") { state =>
-    s"""set scalaVersion in ThisBuild := "$scala211" """ ::
-      state
-  },
-  // This is invoked by Travis
-  commands += Command.command("checkBuildScala211") { state =>
-    s"++ $scala211" ::
-      // First compile everything before attempting to test
-      "all compile test:compile" ::
-      // Now run known working tests.
-      safeUnitTests.key.label ::
-      state
-  }
-)
-
 def commonSettings: Seq[Setting[_]] = Seq(
-  organization := "org.scala-sbt",
+  organization := "com.github.alexarchambault.sbt",
   version := "0.13.8-SNAPSHOT",
-  scalaVersion in ThisBuild := "2.11.4",
+  scalaVersion := "2.11.4",
+  crossScalaVersions := Seq("2.10.4", "2.11.4"),
   publishArtifact in packageDoc := false,
   publishMavenStyle := false,
-  componentID := None,
-  crossPaths := false,
   resolvers += Resolver.typesafeIvyRepo("releases"),
   concurrentRestrictions in Global += Util.testExclusiveRestriction,
   testOptions += Tests.Argument(TestFrameworks.ScalaCheck, "-w", "1"),
@@ -35,11 +16,11 @@ def commonSettings: Seq[Setting[_]] = Seq(
 )
 
 def minimalSettings: Seq[Setting[_]] =
-  commonSettings ++ customCommands ++ Status.settings ++
-  publishPomSettings ++ Release.javaVersionCheckSettings
+  commonSettings ++ Status.settings ++
+  publishPomSettings
 
 def baseSettings: Seq[Setting[_]] =
-  minimalSettings ++ Seq(projectComponent) ++ baseScalacOptions ++ Licensed.settings ++ Formatting.settings
+  minimalSettings ++ baseScalacOptions ++ Licensed.settings ++ Formatting.settings
 
 
 // Path, IO (formerly FileUtilities), NameFilter and other I/O utility classes
@@ -47,8 +28,7 @@ lazy val ioProj = (project in file("util") / "io").
   settings(baseSettings ++ testDependencies ++ Util.crossBuild: _*).
   settings(
     name := "IO",
-    libraryDependencies += scalaCompiler.value % Test,
-    crossScalaVersions := Seq(scala210, scala211)
+    libraryDependencies += scalaCompiler.value % Test
   )
 
 // Apache Ivy integration

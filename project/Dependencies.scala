@@ -2,9 +2,6 @@ import sbt._
 import Keys._
 
 object Dependencies {
-  lazy val scala210 = "2.10.4"
-  lazy val scala211 = "2.11.1"
-
   lazy val ivy = "org.scala-sbt.ivy" % "ivy" % "2.3.0-sbt-fccfbd44c9f64523b61398a0155784dcbaeae28f"
   lazy val jsch = "com.jcraft" % "jsch" % "0.1.46" intransitive ()
   lazy val json4sNative = "org.json4s" %% "json4s-native" % "3.2.10"

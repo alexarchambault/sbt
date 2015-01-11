@@ -31,10 +31,6 @@ object Util {
     }
   )
 
-  def projectComponent = projectID <<= (projectID, componentID) { (pid, cid) =>
-    cid match { case Some(id) => pid extra ("e:component" -> id); case None => pid }
-  }
-
   lazy val apiDefinitions = TaskKey[Seq[File]]("api-definitions")
 
   def generateAPICached(cache: File, defs: Seq[File], cp: Classpath, out: File, main: Option[String], run: ScalaRun, s: TaskStreams): Seq[File] =

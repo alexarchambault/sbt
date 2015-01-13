@@ -4,7 +4,7 @@
 package sbt
 
 import java.io.File
-import com.typesafe.scalalogging.Logger
+import org.slf4j.Logger
 
 import scala.xml.{ Node => XNode, NodeSeq }
 import collection.mutable

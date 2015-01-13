@@ -4,7 +4,7 @@
 package sbt
 
 import org.apache.ivy.util.{ Message, MessageLogger, MessageLoggerEngine }
-import com.typesafe.scalalogging.Logger
+import org.slf4j.Logger
 
 /** Interface to Ivy logging. */
 private final class IvyLoggerInterface(logger: Logger) extends MessageLogger {

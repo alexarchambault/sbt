@@ -13,7 +13,7 @@ import org.apache.ivy.plugins.repository.{ ArtifactResourceResolver, Resource, R
 import org.apache.ivy.plugins.resolver.util.ResolvedResource
 import org.apache.ivy.util.FileUtil
 
-import com.typesafe.scalalogging.Logger
+import org.slf4j.Logger
 
 class NotInCache(val id: ModuleID, cause: Throwable)
     extends RuntimeException(NotInCache(id, cause), cause) {

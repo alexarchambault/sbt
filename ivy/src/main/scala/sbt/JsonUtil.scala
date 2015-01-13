@@ -5,7 +5,7 @@ import java.net.URL
 import org.json4s._
 import org.apache.ivy.core
 import core.module.descriptor.ModuleDescriptor
-import com.typesafe.scalalogging.Logger
+import org.slf4j.Logger
 
 private[sbt] object JsonUtil {
   def parseUpdateReport(md: ModuleDescriptor, path: File, cachedDescriptor: File, log: Logger): UpdateReport =

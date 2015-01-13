@@ -3,7 +3,7 @@
  */
 package sbt
 
-import com.typesafe.scalalogging.Logger
+import org.slf4j.Logger
 
 /**
  * An enumeration defining the levels available for logging.  A level includes all of the levels

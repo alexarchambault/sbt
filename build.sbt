@@ -64,8 +64,7 @@ lazy val ivyProj = (project in file("ivy")).
   settings(baseSettings: _*).
   settings(
     name := "Ivy",
-    libraryDependencies ++= Seq(ivy, jsch, json4sNative, jawnParser, jawnJson4s),
-    libraryDependencies += scalaLogging.value,
+    libraryDependencies ++= Seq(ivy, jsch, json4sNative, jawnParser, jawnJson4s, slf4j),
     testExclusive)
 
 lazy val classpathProj = (project in file("util") / "classpath").

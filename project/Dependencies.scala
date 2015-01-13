@@ -11,14 +11,5 @@ object Dependencies {
   lazy val scalaCheck = "org.scalacheck" %% "scalacheck" % "1.11.4"
   lazy val specs2 = "org.specs2" %% "specs2" % "2.3.11"
   lazy val junit = "junit" % "junit" % "4.11"
-
-  lazy val scalaLogging =
-    Def.setting {
-      scalaVersion.value match {
-        case sv if (sv startsWith "2.9.") || (sv startsWith "2.10.") =>
-          "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2"
-        case _ =>
-          "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0"
-      }
-    }
+  lazy val slf4j = "org.slf4j" % "slf4j-api" % "1.7.10"
 }

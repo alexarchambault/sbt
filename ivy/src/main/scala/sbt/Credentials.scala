@@ -5,7 +5,7 @@ package sbt
 
 import java.io.File
 import org.apache.ivy.util.url.CredentialsStore
-import com.typesafe.scalalogging.Logger
+import org.slf4j.Logger
 
 object Credentials {
   def apply(realm: String, host: String, userName: String, passwd: String): Credentials =

@@ -18,7 +18,7 @@ import org.apache.ivy.core.settings.IvySettings
 import org.apache.ivy.core.module.descriptor.{ DependencyArtifactDescriptor, DependencyDescriptor, License, ModuleDescriptor, ExcludeRule }
 import org.apache.ivy.plugins.resolver.{ ChainResolver, DependencyResolver, IBiblioResolver }
 
-import com.typesafe.scalalogging.Logger
+import org.slf4j.Logger
 
 class MakePom(val log: Logger) {
   @deprecated("Use `write(Ivy, ModuleDescriptor, ModuleInfo, Option[Iterable[Configuration]], Set[String], NodeSeq, XNode => XNode, MavenRepository => Boolean, Boolean, File)` instead", "0.11.2")

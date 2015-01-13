@@ -39,7 +39,6 @@ def commonSettings: Seq[Setting[_]] = Seq(
   resolvers += Resolver.typesafeIvyRepo("releases"),
   concurrentRestrictions in Global += Util.testExclusiveRestriction,
   testOptions += Tests.Argument(TestFrameworks.ScalaCheck, "-w", "1"),
-  javacOptions in compile ++= Seq("-target", "6", "-source", "6", "-Xlint", "-Xlint:-serial"),
   incOptions := incOptions.value.withNameHashing(true)
 ) ++ xerial.sbt.Sonatype.sonatypeSettings
 

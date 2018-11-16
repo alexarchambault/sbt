@@ -11,11 +11,6 @@ object Dependencies {
   // sbt modules
   private val ioVersion = "1.3.0-M3"
   private val utilVersion = "1.3.0-M2"
-  private val lmVersion =
-    sys.props.get("sbt.build.lm.version") match {
-      case Some(version) => version
-      case _ => "1.3.0-M1"
-    }
   private val zincVersion = "1.2.2"
 
   private val sbtIO = "org.scala-sbt" %% "io" % ioVersion
@@ -28,19 +23,25 @@ object Dependencies {
   private val utilTracking = "org.scala-sbt" %% "util-tracking" % utilVersion
   private val utilScripted = "org.scala-sbt" %% "util-scripted" % utilVersion
 
-  private val libraryManagementCore = "org.scala-sbt" %% "librarymanagement-core" % lmVersion
+  private val libraryManagementCore = "org.scala-sbt" %% "librarymanagement-core" % "1.3.0-M1"
 
   private val libraryManagementImpl = {
     val lmOrganization =
       sys.props.get("sbt.build.lm.organization") match {
         case Some(impl) => impl
-        case _ => "org.scala-sbt"
+        case _ => "io.get-coursier"
       }
 
     val lmModuleName =
       sys.props.get("sbt.build.lm.moduleName") match {
         case Some(impl) => impl
-        case _ => "librarymanagement-coursier"
+        case _ => "lm-coursier"
+      }
+
+    val lmVersion =
+      sys.props.get("sbt.build.lm.version") match {
+        case Some(version) => version
+        case _ => "1.1.0-SNAPSHOT"
       }
 
     lmOrganization %% lmModuleName % lmVersion
